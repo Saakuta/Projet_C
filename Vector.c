@@ -1,5 +1,7 @@
-//
-// Created by Jonathan R. on 20/04/2023.
-//
+#include <stdio.h>
+#include "vector.h"
 
-#include "Vector.h"
+int main() {
+    menu_1();
+
+}

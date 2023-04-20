@@ -1,8 +1,7 @@
-//
-// Created by Jonathan R. on 20/04/2023.
-//
+#include <stdio.h>
 
-#ifndef PROJET_C_VECTOR_H
-#define PROJET_C_VECTOR_H
+#ifndef VECTOR_TEXT_BASED_EDITOR_VECTOR_H
+#define VECTOR_TEXT_BASED_EDITOR_VECTOR_H
 
-#endif //PROJET_C_VECTOR_H
+char menu_1();
+#endif //VECTOR_TEXT_BASED_EDITOR_VECTOR_H
