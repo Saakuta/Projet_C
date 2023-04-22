@@ -36,3 +36,5 @@ Shape *create_point_shape(int px, int py) {
     shp->ptrShape = p;
     return shp;
 }
+
+int global_id =0;
