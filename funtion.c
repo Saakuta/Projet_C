@@ -117,15 +117,6 @@ Shape *create_polygon_shape(int lst[], int n) {
     return shp;
 }
 
-
-void delete_shape(Shape *shape) {
-    if (shape->prtShape != NULL) {
-        delete_shape(shape->prtShape);
-        free(shape->prtShape);
-    }
-    free(shape);
-}
-
 void delete_point(Point *point) {
     free(point);
 }
@@ -157,6 +148,30 @@ void delete_polygon(Polygon *polygon) {
     }
     free(polygon->points);
     free(polygon);
+}
+
+void delete_shape(Shape *shape) {
+    printf("Shape ID: %d\n", shape->id);
+    switch (shape->shape_type) {
+        case POINT:
+            delete_point((Point *) shape->prtShape);
+            break;
+        case LINE:
+            delete_line((Line *) shape->prtShape);
+            break;
+        case SQUARE:
+            delete_shape((Square *) shape->prtShape);
+            break;
+        case RECTANGLE:
+            delete_rectangle((Rectangle *) shape->prtShape);
+            break;
+        case CIRCLE:
+            delete_circle((Circle *) shape->prtShape);
+            break;
+        case POLYGON:
+            delete_polygon((Polygon *) shape->prtShape);
+            break;
+    }
 }
 
 void print_shape(Shape *shape) {
