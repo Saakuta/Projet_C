@@ -32,8 +32,8 @@ Shape *create_empty_shape(SHAPE_TYPE shape_type) {
 
 Point *create_point(int px, int py) {
     Point *p = (Point *) malloc(sizeof(Point));
-    p->x = px;
-    p->y = py;
+    p->pos_x = px;
+    p->pos_y = py;
     return p;
 }
 
@@ -69,7 +69,8 @@ Square *create_square(int px, int py, int length) {
 
 Shape *create_square_shape(int px, int py, int length) {
     Shape *shp = create_empty_shape(SQUARE);
-    Square *sq = create_square(px, py, length);
+    Point * point = create_point(px, py);
+    Square *sq = create_square(point, length);
     shp->prtShape = sq;
     return shp;
 }
@@ -84,7 +85,8 @@ Rectangle *create_rectangle(int px, int py, int width, int height) {
 
 Shape *create_rectangle_shape(int px, int py, int width, int height) {
     Shape *shp = create_empty_shape(RECTANGLE);
-    Rectangle *rect = create_rectangle(px, py, width, height);
+    Point * point = create_point(px, py);
+    Rectangle *rect = create_rectangle(point, width, height);
     shp->prtShape = rect;
     return shp;
 }
@@ -98,7 +100,8 @@ Circle *create_circle(int px, int py, int radius) {
 
 Shape *create_circle_shape(int px, int py, int radius) {
     Shape *shp = create_empty_shape(CIRCLE);
-    Circle *c = create_circle(px, py, radius);
+    Point * point = create_point(px, py);
+    Circle *c = create_circle(point, radius);
     shp->prtShape = c;
     return shp;
 }
@@ -109,17 +112,51 @@ Shape *create_polygon_shape(int lst[], int n) {
         return NULL;
     }
     Shape *shp = create_empty_shape(POLYGON);
-    Polygon *p = create_polygon(lst, n);
+    Polygon *p = create_polygon(n);
     shp->prtShape = p;
     return shp;
 }
 
+
 void delete_shape(Shape *shape) {
     if (shape->prtShape != NULL) {
-        delete_shape_data(shape->prtShape);
+        delete_shape(shape->prtShape);
         free(shape->prtShape);
     }
     free(shape);
+}
+
+void delete_point(Point *point) {
+    free(point);
+}
+
+void delete_line(Line *line) {
+    free(line->p1);
+    free(line->p2);
+    free(line);
+}
+
+void delete_square(Square *square) {
+    free(square->point);
+    free(square);
+}
+
+void delete_rectangle(Rectangle *rectangle) {
+    free(rectangle->point);
+    free(rectangle);
+}
+
+void delete_circle(Circle *circle) {
+    free(circle->center);
+    free(circle);
+}
+
+void delete_polygon(Polygon *polygon) {
+    for (int i = 0; i < polygon->n; i++) {
+        free(polygon->points);
+    }
+    free(polygon->points);
+    free(polygon);
 }
 
 void print_shape(Shape *shape) {
@@ -151,8 +188,6 @@ void print_shape(Shape *shape) {
             break;
     }
 }
-
-
 
 
 
