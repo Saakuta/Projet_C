@@ -1,7 +1,9 @@
 #include <stdio.h>
-#include "vector.h"
+#include "Vector.h"
 
 int main() {
-    menu_1();
+    Point * p = create_point (10, 15);
+    print_shape((Shape *) p);
+    delete_point(p);
 
 }

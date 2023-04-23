@@ -1,10 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "vector.h"
+#include "Vector.h"
 
 char menu_1() { /* Menu principal*/
 
     char choice1;
+    printf("Votre choix : ");
+    scanf("%c", &choice1);
 
     while (choice1 != 'F')
     {
@@ -17,9 +19,10 @@ char menu_1() { /* Menu principal*/
         printf("F - Arrêter le programme\n");
 
         printf("Votre choix : ");
-        scanf("%c", choice1);
+        scanf("%c", &choice1);
         printf("%c", choice1);
     }
+    return choice1;
 }
 
 Shape *create_empty_shape(SHAPE_TYPE shape_type) {
@@ -53,9 +56,7 @@ Line *create_line(int px1, int py1, int px2, int py2) {
 
 Shape *create_line_shape(int px1, int py1, int px2, int py2) {
     Shape *shp = create_empty_shape(LINE);
-    Point * p1 = create_point(px1, py1);
-    Point * p2 = create_point(px2, py2);
-    Line *l = create_line(p1, p2);
+    Line *l = create_line(px1, py1, px2, py2);
     shp->prtShape = l;
     return shp;
 }
@@ -69,8 +70,8 @@ Square *create_square(int px, int py, int length) {
 
 Shape *create_square_shape(int px, int py, int length) {
     Shape *shp = create_empty_shape(SQUARE);
-    Point * point = create_point(px, py);
-    Square *sq = create_square(point, length);
+
+    Square *sq = create_square(px, py, length);
     shp->prtShape = sq;
     return shp;
 }
@@ -85,8 +86,7 @@ Rectangle *create_rectangle(int px, int py, int width, int height) {
 
 Shape *create_rectangle_shape(int px, int py, int width, int height) {
     Shape *shp = create_empty_shape(RECTANGLE);
-    Point * point = create_point(px, py);
-    Rectangle *rect = create_rectangle(point, width, height);
+    Rectangle *rect = create_rectangle(px, py, width, height);
     shp->prtShape = rect;
     return shp;
 }
@@ -100,8 +100,7 @@ Circle *create_circle(int px, int py, int radius) {
 
 Shape *create_circle_shape(int px, int py, int radius) {
     Shape *shp = create_empty_shape(CIRCLE);
-    Point * point = create_point(px, py);
-    Circle *c = create_circle(point, radius);
+    Circle *c = create_circle(px, py, radius);
     shp->prtShape = c;
     return shp;
 }
@@ -112,7 +111,7 @@ Shape *create_polygon_shape(int lst[], int n) {
         return NULL;
     }
     Shape *shp = create_empty_shape(POLYGON);
-    Polygon *p = create_polygon(n);
+    Polygon *p = create_polygon(lst[],n);
     shp->prtShape = p;
     return shp;
 }
