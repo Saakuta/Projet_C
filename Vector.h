@@ -3,8 +3,6 @@
 #ifndef VECTOR_TEXT_BASED_EDITOR_VECTOR_H
 #define VECTOR_TEXT_BASED_EDITOR_VECTOR_H
 
-char menu_1();
-
 typedef struct {
     int pos_x;
     int pos_y;

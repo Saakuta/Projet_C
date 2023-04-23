@@ -8,7 +8,7 @@ char menu_1() { /* Menu principal*/
     printf("Votre choix : ");
     scanf("%c", &choice1);
 
-    do{
+    do {
         if (choice1 != 'A' && choice1 != 'B' && choice1 != 'C' && choice1 != 'D' && choice1 != 'E' && choice1 != 'F') {
             printf("Erreur: Veuillez choisir une action valide.\n");
             printf("Votre choix : ");
