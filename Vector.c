@@ -3,7 +3,7 @@
 
 int main() {
     Point * p = create_point (10, 15);
-    print_shape((Shape *) p);
+    print_point(p);
     delete_point(p);
 
 }

@@ -117,7 +117,7 @@ Shape *create_polygon_shape(int lst[], int n) {
         return NULL;
     }
     Shape *shp = create_empty_shape(POLYGON);
-    Polygon *p = create_polygon(lst[],n);
+    Polygon *p = create_polygon(n);
     shp->prtShape = p;
     return shp;
 }
@@ -165,7 +165,7 @@ void delete_shape(Shape *shape) {
             delete_line((Line *) shape->prtShape);
             break;
         case SQUARE:
-            delete_shape((Square *) shape->prtShape);
+            /*delete_shape((Square *) shape->prtShape);*/
             break;
         case RECTANGLE:
             delete_rectangle((Rectangle *) shape->prtShape);

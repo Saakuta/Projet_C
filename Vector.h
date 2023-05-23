@@ -55,7 +55,7 @@ typedef struct {
     int n;
 } Polygon;
 
-Polygon *create_polygon(int lst[], int n);
+Polygon *create_polygon(int n);
 void delete_polygon(Polygon * polygon);
 void print_polygon(Polygon * polygon);
 
