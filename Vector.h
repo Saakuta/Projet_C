@@ -111,6 +111,24 @@ void pixel_rectangle(Shape* shape, Pixel*** pixel_tab, int *nb_pixels);
 void pixel_square(Shape* shape, Pixel*** pixel_tab, int *nb_pixels);
 void pixel_polygon(Shape* shape, Pixel*** pixel_tab, int *nb_pixels);
 
+Pixel** create_shape_to_pixel(Shape * shape, int* nb_pixels);
+void delete_pixel_shape(Pixel*** pixel, int nb_pixels);
+
+struct command {
+    char name[50];
+    int int_size;
+    int int_params[10];
+    int str_size;
+    char* str_params[10];
+};
+typedef struct command Command;
+
+Command* create_commande();
+void add_str_param(Command* cmd, char* p);
+void add_int_param(Command* cmd, int p);
+void free_cmd(Command* cmd);
+int read_exec_command(Command* cmd);
+void read_from_stdin(Command* cmd);
 
 
 #endif //VECTOR_TEXT_BASED_EDITOR_VECTOR_H
